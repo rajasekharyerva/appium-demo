@@ -1,0 +1,17 @@
+# Use Node.js official image as a base image
+FROM node:16
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Install Appium
+RUN npm install -g appium
+
+# Install necessary drivers (you can modify this as per your needs)
+RUN appium driver install uiautomator2
+
+# Expose the port Appium will use
+EXPOSE 4723
+
+# Start Appium server when the container runs
+CMD ["appium"]
